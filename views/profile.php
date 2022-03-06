@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<?php require_once "./includes/header.php" ?>
+<?php require_once "./../includes/header.php" ?>
 <body>
 <div class="container-fluid">
     <div class="row profile-bg position-relative" style="margin-bottom: 20rem">
