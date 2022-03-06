@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<?php require_once "./includes/header.php" ?>
+<?php require_once "./../includes/header.php" ?>
 <body>
 <div class="table-responsive">
 <div class="card">
