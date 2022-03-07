@@ -89,15 +89,6 @@ body {
     inset 0 -32px 32px -32px rgb(0 0 0 / 5%);
 }
 
-.chat-box .text {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    width: calc(100% - 50px);
-    text-align: center;
-    transform: translate(-50%, -50%);
-}
-
 .chat-box .chat {
     margin: 15px 0;
 }
