@@ -5,22 +5,14 @@ require_once "signUp.php";
 
 <body>
 <div id="parent_div">
-    <div class="header_navbar">
-        <div class="header_navbar_logo">
-            <!--                                                info related to logo-->
-        </div>
-        <div class="header_navbar_contents">
-            <div class="header_navbar_contents_child">
-                <a href="index.php">Home</a>
-                <a href="signUpUI.php">Register</a>
-            </div>
-        </div>
-    </div>
+    <?php
+    require_once "../includes/NavBar.php"
+    ?>
     <div class="banner">
-        <div id="banner-image">
+        <div id="banner-signUp-image">
             <div class="container">
-                <div id="banner_content">
-                    <form action="signUp.php" method="post" class="needs-validation" novalidate>
+                <div id="banner_content_signUp">
+                    <form action="SignUpUI.php" method="post" class="needs-validation" novalidate>
 
                         <div class="<?= $classForDiv ?>">
                             <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
@@ -61,7 +53,7 @@ require_once "signUp.php";
                         <div class="form-group row">
                             <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Mobile Number</label>
                             <div class="col-sm-10">
-                                <input type="number" class="<?= $inputPhoneNumber ?>" id="inputPhoneNumber" name="inputPhoneNumber" maxlength="10" minlength="10">
+                                <input type="number" class="<?= $inputPhoneNumberCCS ?>" id="inputPhoneNumber" name="inputPhoneNumber" maxlength="10" minlength="10">
                                 <div class="invalid-feedback">
                                     Incorrect phone no format
                                 </div>
@@ -84,6 +76,15 @@ require_once "signUp.php";
                                 <input type="password" class="<?= $inputPasswordCSS ?>" id="inputPassword" name="inputPassword">
                                 <div class="invalid-feedback">
                                     Password can only have a maximum 50 characters.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputConfirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="<?= $inputConfirmPasswordCSS ?>" id="inputConfirmPassword" name="inputConfirmPassword">
+                                <div class="invalid-feedback">
+                                    Your Password Does not match.
                                 </div>
                             </div>
                         </div>

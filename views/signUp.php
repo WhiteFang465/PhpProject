@@ -16,8 +16,9 @@ $inputAgeCSS = "form-control";
 $inputGenderCSS = "form-control";
 $inputEmailCSS = "form-control";
 $inputPasswordCSS = "form-control";
+$inputConfirmPasswordCSS = "form-control";
 $inputDateOfBirthCSS = "form-control";
-$inputPhoneNumber = "form-control";
+$inputPhoneNumberCCS = "form-control";
 
 //DIV classes
 $classForDiv = "form-group row";
@@ -39,22 +40,27 @@ if (isset($_POST['inputAge'])) {
         $inputAgeCSS .= " is-invalid";
     }
 }
-if (isset($_POST['inputPhoneNumber'])) {
-    $phoneNumber = $_POST['inputPhoneNumber'];
+if (isset($_POST['inputPhoneNumberCCS'])) {
+    $phoneNumber = $_POST['inputPhoneNumberCCS'];
     if (!is_numeric($phoneNumber) || strlen(strval($phoneNumber)) != 10) {
         $error = true;
-        $inputPhoneNumber .= " is-invalid"; //Concatenate to the css class. Make sure to add space for separation.
+        $inputPhoneNumberCCS .= " is-invalid";
     }
 }
 
 if (isset($_POST['inputEmail']) && !str_contains($_POST['inputEmail'], '@')) {
     $error = true;
-    $inputEmailCSS .= " is-invalid"; //Concatenate to the css class. Make sure to add space for separation.
+    $inputEmailCSS .= " is-invalid";
 }
 
 if (isset($_POST['inputPassword']) && strlen($_POST['inputPassword']) > 50) {
     $error = true;
-    $inputPasswordCSS .= " is-invalid"; //Concatenate to the css class. Make sure to add space for separation.
+    $inputPasswordCSS .= " is-invalid";
+}
+
+if (isset($_POST['inputConfirmPassword']) && $_POST['inputConfirmPassword']!=$_POST['inputPassword']) {
+    $error = true;
+    $inputConfirmPasswordCSS .= " is-invalid";
 }
 
 if (isset($_POST['inputDateOfBirth'])) {
@@ -116,7 +122,7 @@ if ($formSubmitted && !$error) {
         }
     }
 
-    $newRegisteredUser = new User($_POST['inputFirstName'], $_POST['inputLastName'], getGenderEnum($_POST['inputGender']), $_POST['inputAge'], $_POST['inputEmail'], $_POST['inputPassword'], $_POST['inputPhoneNumber'], 0, getIntegerValue($_POST['inputDrinkerSelection']), getIntegerValue($_POST['inputSmokeSelection']));
+    $newRegisteredUser = new User($_POST['inputFirstName'], $_POST['inputLastName'], getGenderEnum($_POST['inputGender']), $_POST['inputAge'], $_POST['inputEmail'], $_POST['inputPassword'], $_POST['inputPhoneNumberCCS'], 0, getIntegerValue($_POST['inputDrinkerSelection']), getIntegerValue($_POST['inputSmokeSelection']));
     $userTable->insert($newRegisteredUser);
 }
 
