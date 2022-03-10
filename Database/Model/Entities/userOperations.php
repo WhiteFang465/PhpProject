@@ -68,7 +68,20 @@ class UserTable extends Database
         }
         return $getAllUsers;
     }
+    public function getUsersByAgeAndGender($minAge, $maxAge, $gender) : Array |false {
+        $query = "select * from user where gender like ". $gender." and age between ".$minAge." and ".$maxAge;
 
+        $results = $this->execute($query);
+
+        if (!$results)
+            return false;
+
+        $getAllUsers=[];
+        foreach ($results as $row) {
+            array_push($getAllUsers, (new User($row['first_name'], $row['last_name'], $row['gender'], $row['age'], $row['email'], $row['password'], $row['mobile_number'], $row['premium'], $row['smokes'], $row['drinks'], $row['id'])));
+        }
+        return $getAllUsers;
+    }
 
 }
 
