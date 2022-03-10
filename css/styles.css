@@ -190,8 +190,8 @@ body{
     width: 20%;
     float: left;
     height: 80px;
-    background-color: #AB095A;
-    margin: 6px 3px;
+    /*background-color: #AB095A;*/
+    margin: 18px 50px;
 }
 .header_navbar_contents{
     margin: 6px 3px;

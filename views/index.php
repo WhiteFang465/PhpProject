@@ -1,5 +1,6 @@
 <html>
 <?php require_once "./../includes/header.php";
+
 $demoProfile = [
     ["name" => "Aiony Haust", "age" => "24", "imgSrc" => "aiony-haust.jpg", "gender" => "Female"],
     ["name" => "Aleksandr Minakov", "age" => "25", "imgSrc" => "aleksandr-minakov.jpg", "gender" => "female"],
@@ -13,19 +14,7 @@ $demoProfile = [
 ?>
 <body>
 <div id="parent_div">
-    <div class="header_navbar">
-        <div class="header_navbar_logo">
-            <!--                                                info related to logo-->
-        </div>
-        <div class="header_navbar_contents">
-            <div class="header_navbar_contents_child">
-                <a href="index.php">Home</a>
-                <a href="#">Find</a>
-                <a href="#">About</a>
-                <a href="#">Register</a>
-            </div>
-        </div>
-    </div>
+    <?php require_once "../includes/navbar.php"; ?>
     <div class="banner">
         <div id="banner-image">
             <div class="container">
