@@ -210,7 +210,7 @@ body{
 .header_navbar_contents a:hover{color:#ffffff ;font-size: 15px;}
 .banner{
     width: 100%;
-    height: 510px;
+    height: 100%;
     background-color: #cd4e89;
     margin-top: 20px;
 }
