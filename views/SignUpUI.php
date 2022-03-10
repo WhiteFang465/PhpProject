@@ -135,5 +135,6 @@ require_once "signUp.php";
         </div>
     </div>
 
-
+</div>
+</body>
 

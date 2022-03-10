@@ -40,6 +40,20 @@ class UserTable extends Database
         return new User($row['first_name'], $row['last_name'], $row['gender'],$row['age'], $row['email'], $row['password'], $row['mobile_number'], $row['premium'], $row['smokes'], $row['drinks'] , $row['id']);
 
     }
+    public function checkUsername($username) : bool {
+        $query = "select * from user where email=:email and password=:password";
+        $values = ["email" => $username];
+        $results = $this->execute($query, $values);
+
+        if (!$results)
+            return false;
+
+        else{
+
+        return true;
+        }
+
+    }
     public function searchUserLike($searchString) : Array |false {
         $query = "select * from user where first_name like %:searchString";
         $values = ["searchString"=>$searchString];
