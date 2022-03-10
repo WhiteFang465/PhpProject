@@ -4,7 +4,11 @@ $demoProfile=[
         ["name"=>"Aiony Haust","age"=>"24","imgSrc"=>"aiony-haust.jpg","gender"=>"Female"],
         ["name"=>"Aleksandr Minakov","age"=>"25","imgSrc"=>"aleksandr-minakov.jpg","gender"=>"female"],
         ["name"=>"Alexander Hipp","age"=>"20","imgSrc"=>"alexander-hipp.jpg","gender"=>"Male"],
-        ["name"=>"Christian Buehner","age"=>"25","imgSrc"=>"christian-buehner.jpg","gender"=>"Male"]
+        ["name"=>"Amir Mohammad","age"=>"26","imgSrc"=>"amir-mohammad.jpg","gender"=>"Male"],
+        ["name"=>"Christian Buehner","age"=>"25","imgSrc"=>"christian-buehner.jpg","gender"=>"Male"],
+        ["name"=>"Christina Wocintechchat","age"=>"19","imgSrc"=>"christina-wocintechchat.jpg","gender"=>"Female"],
+        ["name"=>"Courtney Cook","age"=>"28","imgSrc"=>"courtney-cook.jpg","gender"=>"Female"],
+        ["name"=>"Craig Mckay","age"=>"24","imgSrc"=>"craig-mckay.jpg","gender"=>"Female"]
 ]
 ?>
 <body>
@@ -64,7 +68,7 @@ $demoProfile=[
         {
         ?>
         <div class="profiles_for_guest_container">
-            <img src="../images/Profile_Pictures/<?=$key['imgSrc']?>" alt="<?=$key['name']?>" class="profiles_for_guest_image" style="width:100%;height: 210%">
+            <img src="../images/Profile_Pictures/<?=$key['imgSrc']?>" alt="<?=$key['name']?>" class="profiles_for_guest_image" >
             <div class="profiles_for_guest_middle">
                 <div><h5 >Name : <?=$key['name']?> </h5>
                      <h5>Age : <?=$key['age']?></h5>
