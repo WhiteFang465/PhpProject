@@ -16,7 +16,7 @@
 
             if(isset($_SESSION['username'])) {
                 if ($_SESSION['username'] == "Guest") {
-                    echo "<a href = '../views/login.php'> Register</a >";
+                    echo "<a href = '../views/login.php'> Login</a >";
 
                 }
             }

@@ -10,18 +10,18 @@ if (count($_POST) >= 10) {
 $error = false;
 
 //Input Classes
-$inputFirstNameCSS = "form-control";
-$inputLastNameCSS = "form-control";
-$inputAgeCSS = "form-control";
-$inputGenderCSS = "form-control";
-$inputEmailCSS = "form-control";
-$inputPasswordCSS = "form-control";
-$inputConfirmPasswordCSS = "form-control";
-$inputDateOfBirthCSS = "form-control";
-$inputPhoneNumberCCS = "form-control";
+$inputFirstNameCSS = "form-control ";
+$inputLastNameCSS = "form-control ";
+$inputAgeCSS = "form-control ";
+$inputGenderCSS = "form-control ";
+$inputEmailCSS = "form-control ";
+$inputPasswordCSS = "form-control ";
+$inputConfirmPasswordCSS = "form-control ";
+$inputDateOfBirthCSS = "form-control ";
+$inputPhoneNumberCCS = "form-control ";
 
 //DIV classes
-$classForDiv = "form-group row";
+
 
 
 if (isset($_POST['inputFirstName']) && strlen($_POST['inputFirstName']) > 50) {

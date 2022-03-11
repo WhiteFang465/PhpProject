@@ -60,9 +60,9 @@ class UserTable extends Database
     }
 
     public function searchUserLike($searchString) : Array |false {
-        $query = "select * from user where first_name like :searchString";
-        $values = ["searchString"=>$searchString];
-        $results = $this->execute($query, $values);
+        $query = "select * from user where first_name like '" . $searchString. "%' ";
+        //$values = ["searchString"=>$searchString];
+        $results = $this->execute($query);
 
         if (!$results)
             return false;

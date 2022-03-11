@@ -12,7 +12,7 @@ $users=$userTable->getAllUsers();
 
 if (isset($_POST["looking_for_select"])) {
     $gender = $_POST["looking_for_select"];
-    $minAge = 16;
+    $minAge = 18;
     $maxAge = 60;
     if (isset($_POST["min_age"]) && strlen($_POST["min_age"]) != 0) {
         $minAge = intval($_POST["min_age"]);
@@ -22,9 +22,13 @@ if (isset($_POST["looking_for_select"])) {
     }
     $users = $userTable->getUsersByAgeAndGender($minAge, $maxAge, $gender);
 
+}
+if (isset($_POST['search_by_name'])){
+    if (strlen($_POST['search_by_name'])>0){
+         if($userTable->searchUserLike($_POST['search_by_name']))
+             $users = $userTable->searchUserLike($_POST['search_by_name']);
 
-
-
+    }
 }
 foreach ($users as $user) {
     array_push($demoProfile, [
@@ -47,7 +51,7 @@ $demoProfile = [
     ["name" => "Craig Mckay", "age" => "24", "imgSrc" => "craig-mckay.jpg", "gender" => "Female"]
 ]*/
 ?>
-<body>
+<body class="index_body">
 <div id="parent_div">
     <?php require_once "../includes/navbar.php"; ?>
     <div class="banner">
@@ -73,6 +77,13 @@ $demoProfile = [
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">To Age</label>
                             <input type="number" class="form-control col-sm-6" name="max_age" placeholder="Maximum Age">
+                        </div>
+                        <hr>
+                        <h3 >OR</h3>
+                        <hr>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Search</label>
+                            <input type="text" class="form-control col-sm-6" name="search_by_name" placeholder="Search By Name">
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-6">
