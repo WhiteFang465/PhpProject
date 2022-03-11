@@ -51,16 +51,13 @@ if (isset($_POST['inputPhoneNumberCCS'])) {
 if (isset($_POST['inputEmail']) && !str_contains($_POST['inputEmail'], '@')) {
     $error = true;
     $inputEmailCSS .= " is-invalid";
-}elseif (isset($_POST['inputEmail'])){
-    $error=true;
-    $inputEmailCSS.=" userAccountExists";
 }
 
 if (isset($_POST['inputPassword']) && strlen($_POST['inputPassword']) > 50) {
     $error = true;
     $inputPasswordCSS .= " is-invalid";
 }
-//$checkUserName=$userTable->checkUsername($_POST['inputEmail']);
+
 if (isset($_POST['inputConfirmPassword']) && $_POST['inputConfirmPassword']!=$_POST['inputPassword']) {
     $error = true;
     $inputConfirmPasswordCSS .= " is-invalid";
@@ -125,7 +122,7 @@ if ($formSubmitted && !$error) {
         }
     }
 
-    $newRegisteredUser = new User($_POST['inputFirstName'], $_POST['inputLastName'], getGenderEnum($_POST['inputGender']), $_POST['inputAge'], $_POST['inputEmail'], $_POST['inputPassword'], $_POST['inputPhoneNumberCCS'], 0, getIntegerValue($_POST['inputDrinkerSelection']), getIntegerValue($_POST['inputSmokeSelection']));
+    $newRegisteredUser = new User($_POST['inputFirstName'], $_POST['inputLastName'], getGenderEnum($_POST['inputGender']), $_POST['inputAge'], $_POST['inputEmail'], $_POST['inputPassword'], $_POST['inputPhoneNumber'], 0, getIntegerValue($_POST['inputDrinkerSelection']), getIntegerValue($_POST['inputSmokeSelection']));
     $userTable->insert($newRegisteredUser);
 }
 
