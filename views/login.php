@@ -73,6 +73,7 @@ if (isset($_REQUEST['username']) && isset($_REQUEST['password'])) {
                 </div>
             </div>
         </div>
+        <?php require_once "../includes/footer.php"; ?>
     </div>
 </body>
 </html>

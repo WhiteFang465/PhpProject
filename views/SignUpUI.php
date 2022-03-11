@@ -134,7 +134,7 @@ require_once "signUp.php";
             </div>
         </div>
     </div>
-
+    <?php require_once "../includes/footer.php"; ?>
 </div>
 </body>
 
