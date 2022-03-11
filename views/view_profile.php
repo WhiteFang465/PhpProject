@@ -48,8 +48,19 @@ if(isset($_REQUEST['removeFavorites'])){
             <div class="row">
                 <div class="col-md-8 align-self-end">
                     <?php
-                    require_once "profileDetails.php";
-
+                    if (isset($_GET['param'])) {
+                        switch ($_GET['param']) {
+                            case 'profileDetails':
+                                require_once "profileDetails.php";
+                                break;
+                            case 'wink' :
+                                require_once "winkNotification.php";
+                                break;
+                            case 'messages':
+                                header("Location:messagePage.php");
+                                break;
+                        }
+                    }
                     ?>
                 </div>
                 <div class="col-md-4 ">
@@ -64,11 +75,7 @@ if(isset($_REQUEST['removeFavorites'])){
 
             </div>
         </div>
-
-
     </div>
 </div>
-
-
 </body>
 </html>
