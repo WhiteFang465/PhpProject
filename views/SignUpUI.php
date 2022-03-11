@@ -6,7 +6,7 @@ require_once "signUp.php";
 <body>
 <div id="parent_div">
     <?php
-    require_once "../includes/NavBar.php"
+    require_once "../includes/NavBar.php";
     ?>
     <div class="banner">
         <div id="banner-signUp-image">

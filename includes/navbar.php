@@ -1,4 +1,6 @@
 <?php
+
+
 ?>
 <div class="header_navbar">
     <div class="header_navbar_logo">
@@ -9,8 +11,26 @@
         <div class="header_navbar_contents_child">
             <a href="../views/index.php">Home</a>
             <a href="../views/#">About</a>
-            <a href="../views/#">Home</a>
-            <a href="../views/SignUpUI.php">Register</a>
+
+            <?php
+
+            if(isset($_SESSION['username'])) {
+                if ($_SESSION['username'] == "Guest") {
+                    echo "<a href = '../views/login.php'> Register</a >";
+
+                }
+            }
+            else{
+                $_SESSION['username']="Guest";
+            }
+            if(isset($_SESSION['username'])){
+                echo "Hello ".$_SESSION['username'];
+                if($_SESSION['username']!="Guest")
+                    echo "<a href = '../views/logout.php'> Logout</a >";
+            }
+
+
+            ?>
         </div>
     </div>
 </div>
