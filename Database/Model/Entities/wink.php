@@ -1,6 +1,7 @@
 <?php
 
-class Wink{
+class Wink
+{
     private int $fromUserId;
     private int $toUserId;
     private DateTime $sentTime;
@@ -9,14 +10,12 @@ class Wink{
     /**
      * @param int $fromUserId
      * @param int $toUserId
-     * @param DateTime $sentTime
      * @param bool $isRead
      */
-    public function __construct(int $fromUserId, int $toUserId, DateTime $sentTime, bool $isRead)
+    public function __construct(int $fromUserId, int $toUserId, bool $isRead = false)
     {
         $this->fromUserId = $fromUserId;
         $this->toUserId = $toUserId;
-        $this->sentTime = $sentTime;
         $this->isRead = $isRead;
     }
 
