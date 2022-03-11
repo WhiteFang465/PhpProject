@@ -9,6 +9,8 @@ class User
     private string $email;
     private string $password;
     private string $mobileNumber;
+    private string $profile_pictures;
+    private string $images;
     private bool $premium;
     private bool $smokes;
 
@@ -21,11 +23,12 @@ class User
      * @param string $email
      * @param string $password
      * @param string $mobileNumber
+     * @param string $profile_picture
+     * @param string $images
      * @param bool $premium
      * @param bool $smokes
-     * @param bool $drinks
      */
-    public function __construct( string $firstName, string $lastName, string $gender, int $age, string $email, string $password, string $mobileNumber, bool $premium, bool $smokes, bool $drinks, int $id = -1)
+    public function __construct( string $firstName, string $lastName, string $gender, int $age, string $email, string $password, string $mobileNumber, string $profile_picture, string $images, bool $premium, bool $smokes,int $id=-1)
     {
         $this->id = $id;
         $this->firstName = $firstName;
@@ -35,9 +38,26 @@ class User
         $this->email = $email;
         $this->password = $password;
         $this->mobileNumber = $mobileNumber;
+        $this->profile_pictures = $profile_picture;
+        $this->images = $images;
         $this->premium = $premium;
         $this->smokes = $smokes;
-        $this->drinks = $drinks;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 
     /**
@@ -153,6 +173,38 @@ class User
     }
 
     /**
+     * @return string
+     */
+    public function getProfilePicture(): string
+    {
+        return $this->profile_pictures;
+    }
+
+    /**
+     * @param string $profile_picture
+     */
+    public function setProfilePicture(string $profile_picture): void
+    {
+        $this->profile_pictures = $profile_picture;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImages(): string
+    {
+        return $this->images;
+    }
+
+    /**
+     * @param string $images
+     */
+    public function setImages(string $images): void
+    {
+        $this->images = $images;
+    }
+
+    /**
      * @return bool
      */
     public function isPremium(): bool
@@ -183,40 +235,6 @@ class User
     {
         $this->smokes = $smokes;
     }
-
-    /**
-     * @return bool
-     */
-    public function isDrinks(): bool
-    {
-        return $this->drinks;
-    }
-
-    /**
-     * @param bool $drinks
-     */
-    public function setDrinks(bool $drinks): void
-    {
-        $this->drinks = $drinks;
-    }
-    private bool $drinks;
-
-    /**
-     * @return int
-     */
-    public function getId(): int
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
-    {
-        $this->id = $id;
-    }
-
 
 
 }

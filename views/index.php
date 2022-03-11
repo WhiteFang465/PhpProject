@@ -1,6 +1,38 @@
 <html>
-<?php require_once "./../includes/header.php";
+<?php
+require_once "./../includes/header.php";
+require_once "./../Database/Model/Entities/user.php";
+require_once "./../Database/Model/Entities/userOperations.php";
 
+$demoProfile = [];
+$users=$userTable->getAllUsers();
+
+if (isset($_POST["looking_for_select"])) {
+    $gender = $_POST["looking_for_select"];
+    $minAge = 16;
+    $maxAge = 60;
+    if (isset($_POST["min_age"]) && strlen($_POST["min_age"]) != 0) {
+        $minAge = intval($_POST["min_age"]);
+    }
+    if (isset($_POST["max_age"]) && strlen($_POST["max_age"]) != 0) {
+        $maxAge = intval($_POST["max_age"]);
+    }
+    $users = $userTable->getUsersByAgeAndGender($minAge, $maxAge, $gender);
+
+
+
+
+}
+foreach ($users as $user) {
+    array_push($demoProfile, [
+        "name" => $user->getFirstName() . " " . $user->getLastName(),
+        "imgSrc" => $user->getProfilePicture(),
+        "gender" => $user->getGender(),
+        "age" => $user->getAge()
+    ]);
+}
+
+/*
 $demoProfile = [
     ["name" => "Aiony Haust", "age" => "24", "imgSrc" => "aiony-haust.jpg", "gender" => "Female"],
     ["name" => "Aleksandr Minakov", "age" => "25", "imgSrc" => "aleksandr-minakov.jpg", "gender" => "female"],
@@ -10,7 +42,7 @@ $demoProfile = [
     ["name" => "Christina Wocintechchat", "age" => "19", "imgSrc" => "christina-wocintechchat.jpg", "gender" => "Female"],
     ["name" => "Courtney Cook", "age" => "28", "imgSrc" => "courtney-cook.jpg", "gender" => "Female"],
     ["name" => "Craig Mckay", "age" => "24", "imgSrc" => "craig-mckay.jpg", "gender" => "Female"]
-]
+]*/
 ?>
 <body>
 <div id="parent_div">
@@ -19,14 +51,14 @@ $demoProfile = [
         <div id="banner-image">
             <div class="container">
                 <div id="banner_content">
-                    <form class="form-group">
+                    <form class="form-group" method="post">
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Looking For</label>
                             <select class="form-select form-select-sm col-sm-6" name="looking_for_select">
-                                <option value="1">Female</option>
-                                <option value="2">Male</option>
-                                <option value="3">Bi-Sexual</option>
-                                <option value="4">Gay</option>
+                                <option value="F">Female</option>
+                                <option value="M">Male</option>
+                                <option value="O">Others</option>
+
                             </select>
                         </div>
 

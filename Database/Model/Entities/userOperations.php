@@ -22,8 +22,8 @@ class UserTable extends Database
     }
 
     public function update(User $user) : void{
-        $query = "update user SET first_name = ?, last_name = ?, gender=?, age=?, email = ?, password = ?, mobile_number=?, premium=?, smokes=?, drinks=? where id = ?";
-        $values = [$user->getFirstName(), $user->getLastName(), $user->getGender(),$user->getAge(), $user->getEmail(), $user->getPassword(), $user->getMobileNumber(), $user->isPremium(), $user->isSmokes(), $user->isDrinks(), $user->getId()];
+        $query = "update user SET first_name = ?, last_name = ?, gender=?, age=?, email = ?, password = ?, mobile_number=?, profile_pictures=?, images=?, premium=?, smokes=?, drinks=? where id = ?";
+        $values = [$user->getFirstName(), $user->getLastName(), $user->getGender(),$user->getAge(), $user->getEmail(), $user->getPassword(), $user->getMobileNumber(), $user->getProfilePicture(), $user->getImages(), $user->isPremium(), $user->isSmokes(), $user->isDrinks(), $user->getId()];
         $this->execute($query, $values);
     }
 
@@ -37,7 +37,7 @@ class UserTable extends Database
             return false;
 
         $row = $results[0];
-        return new User($row['first_name'], $row['last_name'], $row['gender'],$row['age'], $row['email'], $row['password'], $row['mobile_number'], $row['premium'], $row['smokes'], $row['drinks'] , $row['id']);
+        return new User($row['first_name'], $row['last_name'], $row['gender'],$row['age'], $row['email'], $row['password'], $row['mobile_number'], $row['profile_pictures'], $row['images'], $row['premium'], $row['smokes'], $row['drinks'] , $row['id']);
 
     }
     public function searchUserLike($searchString) : Array |false {
@@ -50,7 +50,7 @@ class UserTable extends Database
 
         $searchLikeUsers=[];
         foreach ($results as $row) {
-            array_push($searchLikeUsers, (new User($row['first_name'], $row['last_name'], $row['gender'], $row['age'], $row['email'], $row['password'], $row['mobile_number'], $row['premium'], $row['smokes'], $row['drinks'], $row['id'])));
+            array_push($searchLikeUsers, (new User($row['first_name'], $row['last_name'], $row['gender'], $row['age'], $row['email'], $row['password'], $row['mobile_number'], $row['profile_pictures'], $row['images'], $row['premium'], $row['smokes'], $row['drinks'], $row['id'])));
         }
         return $searchLikeUsers;
     }
@@ -64,12 +64,12 @@ class UserTable extends Database
 
         $getAllUsers=[];
         foreach ($results as $row) {
-            array_push($getAllUsers, (new User($row['first_name'], $row['last_name'], $row['gender'], $row['age'], $row['email'], $row['password'], $row['mobile_number'], $row['premium'], $row['smokes'], $row['drinks'], $row['id'])));
+            array_push($getAllUsers, (new User($row['first_name'], $row['last_name'], $row['gender'], $row['age'], $row['email'], $row['password'], $row['mobile_number'], $row['profile_pictures'], $row['images'],  $row['premium'], $row['smokes'], $row['drinks'], $row['id'])));
         }
         return $getAllUsers;
     }
     public function getUsersByAgeAndGender($minAge, $maxAge, $gender) : Array |false {
-        $query = "select * from user where gender like ". $gender." and age between ".$minAge." and ".$maxAge;
+        $query = "select * from user where gender like '". $gender."' and age between ".$minAge." and ".$maxAge;
 
         $results = $this->execute($query);
 
@@ -78,7 +78,7 @@ class UserTable extends Database
 
         $getAllUsers=[];
         foreach ($results as $row) {
-            array_push($getAllUsers, (new User($row['first_name'], $row['last_name'], $row['gender'], $row['age'], $row['email'], $row['password'], $row['mobile_number'], $row['premium'], $row['smokes'], $row['drinks'], $row['id'])));
+            array_push($getAllUsers, (new User($row['first_name'], $row['last_name'], $row['gender'], $row['age'], $row['email'], $row['password'], $row['mobile_number'], $row['profile_pictures'], $row['images'], $row['premium'], $row['smokes'], $row['drinks'], $row['id'])));
         }
         return $getAllUsers;
     }
