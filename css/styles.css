@@ -190,8 +190,8 @@ body{
     width: 20%;
     float: left;
     height: 80px;
-    background-color: #AB095A;
-    margin: 6px 3px;
+    /*background-color: #AB095A;*/
+    margin: 18px 50px;
 }
 .header_navbar_contents{
     margin: 6px 3px;
@@ -250,8 +250,8 @@ body{
 }
 .profiles_for_guest{
     width: 100%;
-    height: 600px;
-    background-color: #cd4e89;
+    height: 660px;
+    background-color: #a27a99;
     margin-top: 20px;
 }
 .profiles_holder{
@@ -263,15 +263,17 @@ body{
     margin-left:20px;
     position: relative;
     width: 300px;
-    height: 150px;
+    height: 300px;
     float: left;
+    margin-top: 20px;
+    border-radius: 10px;
 
 }
 .profiles_for_guest_middle{
     transition: .5s ease;
     opacity: 0;
     position: absolute;
-    top:120%;
+    top:50%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%)
@@ -279,10 +281,11 @@ body{
 .profiles_for_guest_image{
     opacity: 1;
     display: block;
-    width: 100%;
-    height: auto;
     transition: .5s ease;
     backface-visibility: hidden;
+    width:300px;
+    height: 300px;
+    border-radius: 10px;
 }
 .profiles_for_guest_container:hover .profiles_for_guest_middle{
     opacity: 1;
@@ -290,4 +293,5 @@ body{
 .profiles_for_guest_container:hover .profiles_for_guest_image{
     opacity: 0.3;
 }
+                                                    /*footer*/
 
