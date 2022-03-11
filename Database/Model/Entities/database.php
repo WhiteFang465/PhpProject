@@ -50,6 +50,7 @@ class Database {
         $imgURL = $this->getData($id);
         return $imgURL[0]['images'];
     }
+
 }
 //
 //$db = new Database();

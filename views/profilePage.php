@@ -37,7 +37,7 @@ if (isset($_GET['paramId'])){
                         <a class="nav-link text-white" href="profilePage.php?param=profileDetails">Profile</a>
                     </li>
                     <?php
-                    if (isset($_SESSION['id'])) { ?>
+                    if (isset($_SESSION['id']) && !isset($_SESSION['paramId']) && !isset($_GET['paramId'])) { ?>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="profilePage.php?param=wink"> Wink <span
                                         class="badge badge-pill badge-light">1</span></a>

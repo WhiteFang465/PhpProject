@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "./../Database/Model/Entities/database.php";
+require_once "./../Database/Model/Entities/userOperations.php";
 if (isset($_SESSION['id'])) {
     $output = "";
     $query = "select from_user_id,to_user_id,message from message 
@@ -17,7 +18,7 @@ if (isset($_SESSION['id'])) {
                         </div>
                     </div>' : $output . '<div class="chat incoming">
                         <div class="details">
-                            <p>' . $message["message"] . '</p>
+                            <p>' . $message["message"] . '<i class= "ml-2 text-muted fa-solid fa-check-double"></i></p>
                         </div>
                     </div>';
     }
