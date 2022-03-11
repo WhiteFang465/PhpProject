@@ -25,6 +25,10 @@
                         <a class="nav-link text-white" href="profilePage.php?param=messages">Messages <span
                                     class="badge badge-pill badge-light">1</span></a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="profilePage.php?param=messages">Photos <span
+                                    class="badge badge-pill badge-light">1</span></a>
+                    </li>
                 </ul>
             </div>
             <div class="row">
