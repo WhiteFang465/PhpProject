@@ -51,7 +51,7 @@ if (isset($_POST['inputPhoneNumberCCS'])) {
 if (isset($_POST['inputEmail']) && !str_contains($_POST['inputEmail'], '@')) {
     $error = true;
     $inputEmailCSS .= " is-invalid";
-}elseif (isset($_POST['inputEmail']) ){
+}elseif (isset($_POST['inputEmail'])){
     $error=true;
     $inputEmailCSS.=" userAccountExists";
 }
