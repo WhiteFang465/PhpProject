@@ -8,7 +8,7 @@ if (count($_POST) >= 10) {
     $formSubmitted = false;
 }
 $error = false;
-$checkUserName=$userTable->checkUsername($_POST['inputEmail']);
+
 //Input Classes
 $inputFirstNameCSS = "form-control";
 $inputLastNameCSS = "form-control";
@@ -51,7 +51,7 @@ if (isset($_POST['inputPhoneNumberCCS'])) {
 if (isset($_POST['inputEmail']) && !str_contains($_POST['inputEmail'], '@')) {
     $error = true;
     $inputEmailCSS .= " is-invalid";
-}elseif (isset($_POST['inputEmail']) && $checkUserName){
+}elseif (isset($_POST['inputEmail']) ){
     $error=true;
     $inputEmailCSS.=" userAccountExists";
 }
@@ -60,7 +60,7 @@ if (isset($_POST['inputPassword']) && strlen($_POST['inputPassword']) > 50) {
     $error = true;
     $inputPasswordCSS .= " is-invalid";
 }
-
+//$checkUserName=$userTable->checkUsername($_POST['inputEmail']);
 if (isset($_POST['inputConfirmPassword']) && $_POST['inputConfirmPassword']!=$_POST['inputPassword']) {
     $error = true;
     $inputConfirmPasswordCSS .= " is-invalid";
