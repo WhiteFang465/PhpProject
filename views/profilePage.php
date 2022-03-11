@@ -59,7 +59,7 @@ if (isset($_GET['paramId'])){
                                 require_once "profileDetails.php";
                                 break;
                             case 'wink' :
-                                require_once  "winkPage.php";
+                                require_once "winkNotification.php";
                                 break;
                             case 'messages':
                                require_once "userMessageList.php";

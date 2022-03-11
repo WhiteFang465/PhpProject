@@ -56,7 +56,7 @@ require_once "./../Database/Model/Entities/userOperations.php";
                                 require_once "profileDetails.php";
                                 break;
                             case 'wink' :
-                                require_once  "winkPage.php";
+                                require_once "winkNotification.php";
                                 break;
                             case 'messages':
                                 header("Location:messagePage.php");
