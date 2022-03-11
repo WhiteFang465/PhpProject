@@ -4,11 +4,11 @@ require_once "./../Database/Model/Entities/userOperations.php";
 require_once "./../Database/Model/Entities/user.php";
 require_once "./../Database/Model/Entities/favoritesOperations.php";
 $user=false;
-$_POST['id']=4;
+//$_POST['id']=4;
 
-if(isset($_POST['id']) && strlen($_POST['id'])>0) {
-    $_SESSION['id'] = $_POST['id'];
-    $user = $userTable->getUserByID($_POST['id']);
+if(isset($_REQUEST['id']) && strlen($_REQUEST['id'])>0) {
+    $_SESSION['id'] = $_REQUEST['id'];
+    $user = $userTable->getUserByID($_REQUEST['id']);
 }
 
 if(isset($_REQUEST['addFavorites'])){
@@ -48,19 +48,8 @@ if(isset($_REQUEST['removeFavorites'])){
             <div class="row">
                 <div class="col-md-8 align-self-end">
                     <?php
-                    if (isset($_GET['param'])) {
-                        switch ($_GET['param']) {
-                            case 'profileDetails':
-                                require_once "profileDetails.php";
-                                break;
-                            case 'wink' :
-                                require_once "winkNotification.php";
-                                break;
-                            case 'messages':
-                                header("Location:messagePage.php");
-                                break;
-                        }
-                    }
+                    require_once "profileDetails.php";
+
                     ?>
                 </div>
                 <div class="col-md-4 ">

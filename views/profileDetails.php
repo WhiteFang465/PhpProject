@@ -6,10 +6,10 @@ require_once "./../includes/header.php";
 require_once "./../Database/Model/Entities/userOperations.php";
 require_once "./../Database/Model/Entities/user.php";
 $user=false;
-$_POST['id']=4;
-if(isset($_POST['id']) && strlen($_POST['id'])>0) {
-    $_SESSION['id'] = $_POST['id'];
-    $user = $userTable->getUserByID($_POST['id']);
+//$_POST['id']=4;
+if(isset($_REQUEST['id']) && strlen($_REQUEST['id'])>0) {
+    $_SESSION['id'] = $_REQUEST['id'];
+    $user = $userTable->getUserByID($_REQUEST['id']);
 }
 
 ?>

@@ -110,7 +110,7 @@ $demoProfile = [
                         <div><h5>Name : <?= $key['name'] ?> </h5>
                             <h5>Age : <?= $key['age'] ?></h5>
                             <h5>Gender : <?= $key['gender'] ?></h5>
-                            <a class="btn" href="profilePage.php?paramId=<?= $key['id'] ?>">Connect</a>
+                            <a class="btn" href="view_profile.php?id=<?= $key['id'] ?>">Connect</a>
                         </div>
                     </div>
                 </div>
