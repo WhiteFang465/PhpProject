@@ -31,7 +31,9 @@ if (isset($_POST['search_by_name'])){
     }
 }
 foreach ($users as $user) {
+
     array_push($demoProfile, [
+        "id" => $user->getId(),
         "name" => $user->getFirstName() . " " . $user->getLastName(),
         "imgSrc" => $user->getProfilePicture(),
         "gender" => $user->getGender(),
@@ -51,7 +53,7 @@ $demoProfile = [
     ["name" => "Craig Mckay", "age" => "24", "imgSrc" => "craig-mckay.jpg", "gender" => "Female"]
 ]*/
 ?>
-<body class="index_body">
+<body>
 <div id="parent_div">
     <?php require_once "../includes/navbar.php"; ?>
     <div class="banner">
@@ -108,7 +110,7 @@ $demoProfile = [
                         <div><h5>Name : <?= $key['name'] ?> </h5>
                             <h5>Age : <?= $key['age'] ?></h5>
                             <h5>Gender : <?= $key['gender'] ?></h5>
-                            <button class="btn">Connect</button>
+                            <a class="btn" href="profilePage.php?paramId=<?= $key['id'] ?>">Connect</a>
                         </div>
                     </div>
                 </div>

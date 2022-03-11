@@ -1,22 +1,35 @@
 <?php
+require_once "./../Database/Model/Entities/database.php";
 session_start();
-$_SESSION['id'] = 1;
+$database = new Database();
+$userData = null;
+$profileData = null;
+if (isset($_SESSION['id'])){
+    $userData = $database->getData($_SESSION['id']);
+}
+if (isset($_GET['paramId'])){
+    $profileData = $database->getData($_GET['paramId']);
+}
 ?>
 
 
 <!doctype html>
 <html lang="en">
 <?php require_once "./../includes/header.php" ?>
+
 <body>
+
+
 <div class="container-fluid">
-    <div class="row profile-bg position-relative" style="margin-bottom: 20rem">
+    <?php require_once "./../includes/NavBar.php"; ?>
+    <div class="row profile-bg position-relative" style="margin-bottom: 20rem;width: 100%;height: 100px;/* background-color: #cd4e89; */margin-left: 2px;margin-right: 2px;">
         <div class="col-sm-2 position-absolute">
             <img class="img-thumbnail rounded img-shadow mb-3" style="border-style: none !important;"
                  src="./../images/download.jpg">
-            <h1 class=" text-left card-title"><b>Jimena</b></h1>
+            <h1 class=" text-left card-title"><b><?=$profileData[0]['first_name']?></b></h1>
 
         </div>
-        <div class="col-sm-8 profile-items position-absolute" style="top: 12rem;left: 25rem">
+        <div class="col-sm-8 profile-items position-absolute" style="top: 10rem;left: 25rem">
             <div class="row" style="margin-bottom: 2rem">
                 <ul class="nav nav-pills">
                     <li class="nav-item">
@@ -48,7 +61,7 @@ $_SESSION['id'] = 1;
                                 require_once  "winkPage.php";
                                 break;
                             case 'messages':
-                                header("Location:messagePage.php");
+                               require_once "userMessageList.php";
                                 break;
                         }
                     }
