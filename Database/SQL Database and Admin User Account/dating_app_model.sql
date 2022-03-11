@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2022 at 02:46 AM
+-- Generation Time: Mar 11, 2022 at 01:22 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -112,6 +112,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `mobile_number` varchar(255) NOT NULL,
+  `profile_pictures` varchar(255) NOT NULL,
+  `images` varchar(500) NOT NULL,
   `premium` tinyint(1) NOT NULL,
   `smokes` tinyint(1) NOT NULL,
   `drinks` tinyint(1) NOT NULL,
@@ -122,10 +124,10 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `gender`, `age`, `email`, `password`, `mobile_number`, `premium`, `smokes`, `drinks`) VALUES
-(1, 'John', 'Matheau', 'M', 25, 'john.matheau19@gmail.com', 'John@123#', '5143835758', 0, 1, 0),
-(2, 'Martha', 'Reddy', 'F', 30, 'martha.reddy34@gmail.com', 'Martha@123#', '5143835756', 1, 1, 1),
-(3, 'Arturo', 'Danny', 'O', 45, 'arturo.danny22@gmail.com', 'Arturo@123#', '4533835756', 1, 1, 1);
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `gender`, `age`, `email`, `password`, `mobile_number`, `profile_pictures`, `images`, `premium`, `smokes`, `drinks`) VALUES
+(1, 'John', 'Matheau', 'M', 25, 'john.matheau19@gmail.com', 'John@123#', '5143835758', '', '', 0, 1, 0),
+(2, 'Martha', 'Reddy', 'F', 30, 'martha.reddy34@gmail.com', 'Martha@123#', '5143835756', '', '', 1, 1, 1),
+(3, 'Arturo', 'Danny', 'O', 45, 'arturo.danny22@gmail.com', 'Arturo@123#', '4533835756', '', '', 1, 1, 1);
 
 -- --------------------------------------------------------
 
