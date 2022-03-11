@@ -35,8 +35,15 @@ if(isset($_REQUEST['removeFavorites'])){
     <?php require_once "./../includes/NavBar.php"; ?>
     <div class="row profile-bg position-relative" style="margin-bottom: 20rem;width: 100%;height: 100px;/* background-color: #cd4e89; */margin-left: 2px;margin-right: 2px;">
         <div class="col-sm-2 position-absolute">
+            <?php
+            $profilePicture="./../images/user-icon-png.png";
+            if(($user->getProfilePicture())!="")
+                $profilePicture= "./../images/Profile_Pictures/". $user->getProfilePicture();
+
+            ?>
             <img class="img-thumbnail rounded img-shadow mb-3" style="border-style: none !important;"
-                 src="./../images/Profile_Pictures/<?php echo $user->getProfilePicture();  ?> ">
+                 src="<?= $profilePicture ?>">
+
             <h1 class=" text-center card-title"><b> <?= $user->getFirstName(). " ". $user->getLastName()   ?></b></h1>
 
             <a href="view_profile.php?addFavorites=<?php echo $user->getId() ?>"><button style="border-radius: 50%;"> + </button></a>
