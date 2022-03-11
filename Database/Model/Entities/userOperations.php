@@ -102,6 +102,21 @@ class UserTable extends Database
         return $getAllUsers;
     }
 
+    public function getUserByID ($id) : User |false {
+        $query = "select * from user where id = :id";
+        $values = ["id"=>$id];
+        $results = $this->execute($query, $values);
+
+        if (!$results)
+            return false;
+
+        $user=false;
+        foreach ($results as $row) {
+            $user = (new User($row['first_name'], $row['last_name'], $row['gender'], $row['age'], $row['email'], $row['password'], $row['mobile_number'], $row['profile_pictures'], $row['images'], $row['premium'], $row['smokes'], $row['drinks'], $row['id']));
+        }
+        return $user;
+    }
+
 }
 
 $userTable = new UserTable();
