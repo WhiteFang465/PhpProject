@@ -1,6 +1,15 @@
 <?php
+require_once "./../Database/Model/Entities/database.php";
 session_start();
-$_SESSION['id'] = 1;
+$database = new Database();
+$userData = null;
+$profileData = null;
+if (isset($_SESSION['id'])){
+    $userData = $database->getData($_SESSION['id']);
+}
+if (isset($_GET['paramId'])){
+    $profileData = $database->getData($_GET['paramId']);
+}
 ?>
 
 
@@ -17,7 +26,7 @@ $_SESSION['id'] = 1;
         <div class="col-sm-2 position-absolute">
             <img class="img-thumbnail rounded img-shadow mb-3" style="border-style: none !important;"
                  src="./../images/download.jpg">
-            <h1 class=" text-left card-title"><b>Jimena</b></h1>
+            <h1 class=" text-left card-title"><b><?=$profileData[0]['first_name']?></b></h1>
 
         </div>
         <div class="col-sm-8 profile-items position-absolute" style="top: 10rem;left: 25rem">
@@ -52,7 +61,7 @@ $_SESSION['id'] = 1;
                                 require_once  "winkPage.php";
                                 break;
                             case 'messages':
-                                header("Location:messagePage.php");
+                               require_once "userMessageList.php";
                                 break;
                         }
                     }

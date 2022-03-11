@@ -173,6 +173,23 @@ body {
     opacity: 1;
     pointer-events: auto;
 }
+
+.image-parent {
+    max-width: 40px;
+}
+.image-parent img{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 3rem;
+}
+.list-group a {
+    text-decoration: none;
+    color: black;
+}
+
+.list-group a :hover{
+    color: #AB095A;
+}
                                                /*index.php page*/
 body{
 

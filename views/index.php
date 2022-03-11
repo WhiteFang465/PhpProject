@@ -8,7 +8,7 @@ require_once "./../Database/Model/Entities/userOperations.php";
 session_start();
 
 $demoProfile = [];
-$users=$userTable->getAllUsers();
+$users = $userTable->getAllUsers();
 
 if (isset($_POST["looking_for_select"])) {
     $gender = $_POST["looking_for_select"];
@@ -23,11 +23,11 @@ if (isset($_POST["looking_for_select"])) {
     $users = $userTable->getUsersByAgeAndGender($minAge, $maxAge, $gender);
 
 
-
-
 }
 foreach ($users as $user) {
+
     array_push($demoProfile, [
+        "id" => $user->getId(),
         "name" => $user->getFirstName() . " " . $user->getLastName(),
         "imgSrc" => $user->getProfilePicture(),
         "gender" => $user->getGender(),
@@ -97,7 +97,7 @@ $demoProfile = [
                         <div><h5>Name : <?= $key['name'] ?> </h5>
                             <h5>Age : <?= $key['age'] ?></h5>
                             <h5>Gender : <?= $key['gender'] ?></h5>
-                            <button class="btn">Connect</button>
+                            <a class="btn" href="profilePage.php?paramId=<?= $key['id'] ?>">Connect</a>
                         </div>
                     </div>
                 </div>

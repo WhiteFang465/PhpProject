@@ -10,7 +10,7 @@ class Database {
     ";dbname=" . Database::database . ";port=" . self::port;
     private PDO $connection;
 
-    protected function __construct()
+    public function __construct()
     {
         try {
             $this->connection = new PDO(Database::connectionString, self::username, Database::password);
@@ -20,22 +20,28 @@ class Database {
         }
     }
 
-    protected function executeInsert(String $query, Array $values = null) : Int|false {
+    public function executeInsert(String $query, Array $values = null) : Int|false {
         $stmt = $this->connection->prepare($query );
         $stmt->execute($values);
 
         return $this->connection->lastInsertId();
     }
 
-    protected function execute(String $query, Array $values = null) : Array|false {
+    public function execute(String $query, Array $values = null) : Array|false {
         $stmt = $this->connection->prepare($query );
         $stmt->execute($values);
 
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         return $stmt->fetchAll();
     }
-}
 
+    public function  getData(int $id) : Array|false{
+        $query = "select * from user where id like :id";
+        $values = ["id"=>$id];
+        return $this->execute($query,$values);
+    }
+}
+//
 //$db = new Database();
 //$query = "Select * from user where first_name like :fname and last_name like :lname";
 //$values = ["lname"=>"Mad", "fname" => "reza" ];
@@ -45,4 +51,3 @@ class Database {
 //        echo "Full Name: $row[first_name], $row[last_name] <br />";
 //    }
 //}
-//
