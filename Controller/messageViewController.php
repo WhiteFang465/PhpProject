@@ -6,7 +6,7 @@ if (isset($_SESSION['id'])) {
     $query = "select from_user_id,to_user_id,message from message 
             where from_user_id like :from_user1 and to_user_id like :to_user2
             or from_user_id like :from_user2 and to_user_id like :to_user1
-            order by sent_time asc";
+            order by sent_time desc";
     $db = new Database();
     $values = ['from_user1' => $_SESSION['id'], 'to_user2' => $_POST['id'], 'from_user2' => $_POST['id'], 'to_user1' => $_SESSION['id']];
     $getMessages = $db->execute($query, $values);
