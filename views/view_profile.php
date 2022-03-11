@@ -1,8 +1,14 @@
 <?php
 session_start();
-$_SESSION['id'] = 1;
-
 require_once "./../Database/Model/Entities/userOperations.php";
+require_once "./../Database/Model/Entities/user.php";
+$user=false;
+$_POST['id']=4;
+if(isset($_POST['id']) && strlen($_POST['id'])>0) {
+    $_SESSION['id'] = $_POST['id'];
+    $user = $userTable->getUserByID($_POST['id']);
+}
+
 ?>
 
 
@@ -19,55 +25,35 @@ require_once "./../Database/Model/Entities/userOperations.php";
     <div class="row profile-bg position-relative" style="margin-bottom: 20rem;width: 100%;height: 100px;/* background-color: #cd4e89; */margin-left: 2px;margin-right: 2px;">
         <div class="col-sm-2 position-absolute">
             <img class="img-thumbnail rounded img-shadow mb-3" style="border-style: none !important;"
-                 src="./../images/download.jpg">
-            <h1 class=" text-left card-title"><b> <?php   ?></b></h1>
+                 src="./../images/Profile_Pictures/<?php echo $user->getProfilePicture();  ?> ">
+            <h1 class=" text-left card-title"><b> <?= $user->getFirstName(). " ". $user->getLastName()   ?></b></h1>
 
         </div>
-        <div class="col-sm-8 profile-items position-absolute" style="top: 10rem;left: 25rem">
-            <div class="row" style="margin-bottom: 2rem">
-                <ul class="nav nav-pills">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="profilePage.php?param=profileDetails">Profile</a>
-                    </li>
-                    <?php
-                    if (isset($_SESSION['id'])) { ?>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="profilePage.php?param=wink"> Wink <span
-                                    class="badge badge-pill badge-light">1</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="profilePage.php?param=messages"> Messages <span
-                                    class="badge badge-pill badge-light">1</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="profilePage.php?param=update_profile"> Update Profile <span
-                                    class="badge badge-pill badge-light"></span></a>
-                        </li>
-                    <?php }
-                    ?>
-                </ul>
-            </div>
+        <div class="col-sm-8 profile-items position-absolute" style="top: 20rem;left: 25rem">
+
             <div class="row">
                 <div class="col-md-12 align-self-end">
                     <?php
-                    if (isset($_GET['param'])) {
+                    echo $user->getAge();
+                    /*if (isset($_GET['param'])) {
                         switch ($_GET['param']) {
                             case 'profileDetails':
-                                require_once "profileDetails.php";
+                                require_once "view_profile.php";
                                 break;
-                            case 'wink' :
-                                require_once  "winkPage.php";
-                                break;
-                            case 'messages':
-                                header("Location:messagePage.php");
-                                break;
+
                         }
-                    }
+                    }*/
                     ?>
                 </div>
+
             </div>
+
+
+
         </div>
     </div>
 </div>
+
+
 </body>
 </html>
