@@ -3,7 +3,7 @@ body {
     display: flex;
 }
 
-.profile-items ul a:after {
+.nav ul a:after {
     display: block;
     content: '';
     border-bottom: solid 3px whitesmoke;
