@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once "./../includes/header.php";
-require_once "./../Database/Model/database.php";
+require_once "./../Database/Model/Entities/database.php";
 
 $getData = null;
 $db = new Database();
@@ -16,7 +16,7 @@ if (isset($_GET['id'])) {
 <div class="wrapper">
     <section class="chat-area">
         <header>
-            <a href="user.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+            <a href="profilePage.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
             <img src="./../images/download.jpg" alt="">
             <div class="details">
                 <span><?= $getData[0]['first_name'] ?></span>
