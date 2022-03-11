@@ -117,9 +117,15 @@ class UserTable extends Database
         return $user;
     }
 
+    public function isPremium($id) :bool{
+        $query = "select premium from user where id like :id";
+        $values = ["id"=>$id];
+        $result = $this->execute($query,$values);
+        return $result[0]['premium'] == 1;
+    }
+
 }
 
 $userTable = new UserTable();
-
 //Authenticate
 //var_dump($userTable->authenticate("c", "d"));
