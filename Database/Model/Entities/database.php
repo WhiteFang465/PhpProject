@@ -40,6 +40,16 @@ class Database {
         $values = ["id"=>$id];
         return $this->execute($query,$values);
     }
+
+    public function getName(int $id) :string {
+        $firstName = $this->getData($id);
+        return $firstName[0]['first_name'];
+    }
+
+    public function  getImageURL(int $id) :string{
+        $imgURL = $this->getData($id);
+        return $imgURL[0]['images'];
+    }
 }
 //
 //$db = new Database();
