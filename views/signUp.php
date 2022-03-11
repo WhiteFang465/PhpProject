@@ -122,7 +122,7 @@ if ($formSubmitted && !$error) {
         }
     }
 
-    $newRegisteredUser = new User($_POST['inputFirstName'], $_POST['inputLastName'], getGenderEnum($_POST['inputGender']), $_POST['inputAge'], $_POST['inputEmail'], $_POST['inputPassword'], $_POST['inputPhoneNumber'], 0, getIntegerValue($_POST['inputDrinkerSelection']), getIntegerValue($_POST['inputSmokeSelection']));
+    $newRegisteredUser = new User($_POST['inputFirstName'], $_POST['inputLastName'], getGenderEnum($_POST['inputGender']), $_POST['inputAge'], $_POST['inputEmail'], $_POST['inputPassword'], $_POST['inputPhoneNumber'],"","", 0, getIntegerValue($_POST['inputDrinkerSelection']), getIntegerValue($_POST['inputSmokeSelection']));
     $userTable->insert($newRegisteredUser);
 }
 

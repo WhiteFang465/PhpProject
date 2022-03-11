@@ -13,7 +13,7 @@ class User
     private string $images;
     private bool $premium;
     private bool $smokes;
-
+    private bool $drinks;
     /**
      * @param int $id
      * @param string $firstName
@@ -28,7 +28,7 @@ class User
      * @param bool $premium
      * @param bool $smokes
      */
-    public function __construct( string $firstName, string $lastName, string $gender, int $age, string $email, string $password, string $mobileNumber, string $profile_picture, string $images, bool $premium, bool $smokes,int $id=-1)
+    public function __construct( string $firstName, string $lastName, string $gender, int $age, string $email, string $password, string $mobileNumber, string $profile_picture, string $images, bool $premium, bool $smokes, bool $drinks,int $id=-1)
     {
         $this->id = $id;
         $this->firstName = $firstName;
@@ -42,6 +42,7 @@ class User
         $this->images = $images;
         $this->premium = $premium;
         $this->smokes = $smokes;
+        $this->drinks=$drinks;
     }
 
     /**
@@ -236,5 +237,17 @@ class User
         $this->smokes = $smokes;
     }
 
+    public function isDrinks(): bool
+    {
+        return $this->drinks;
+    }
+
+    /**
+     * @param bool $drinks
+     */
+    public function setDrinks(bool $drinks): void
+    {
+        $this->drinks = $drinks;
+    }
 
 }
