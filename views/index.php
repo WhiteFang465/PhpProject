@@ -99,10 +99,11 @@ $demoProfile = [
         </div>
     </div>
     <div class="profiles_for_guest">
+
         <div class="profiles_holder">
             <?php
             foreach ($demoProfile as $key) {
-                ?>
+            ?>
                 <div class="profiles_for_guest_container">
                     <img src="../images/Profile_Pictures/<?= $key['imgSrc'] ?>" alt="<?= $key['name'] ?>"
                          class="profiles_for_guest_image">
@@ -118,10 +119,10 @@ $demoProfile = [
             }
             ?>
         </div>
-        <div class="footer_body">
 
-        </div>
     </div>
+    <?php require_once "../includes/footer.php"; ?>
+
 </div>
 </body>
 </html>
