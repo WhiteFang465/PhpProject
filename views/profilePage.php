@@ -1,3 +1,9 @@
+<?php
+session_start();
+$_SESSION['id'] = 1;
+?>
+
+
 <!doctype html>
 <html lang="en">
 <?php require_once "./../includes/header.php" ?>
@@ -16,27 +22,30 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="profilePage.php?param=profileDetails">Profile</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="profilePage.php?param=">Wink <span
-                                    class="badge badge-pill badge-light">1</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="profilePage.php?param=messages">Messages <span
-                                    class="badge badge-pill badge-light">1</span></a>
-                    </li>
+                    <?php
+                    if (isset($_SESSION['id'])) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="profilePage.php?param=wink"> Wink <span
+                                        class="badge badge-pill badge-light">1</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="profilePage.php?param=messages"> Messages <span
+                                        class="badge badge-pill badge-light">1</span></a>
+                        </li>
+                    <?php }
+                    ?>
                 </ul>
             </div>
             <div class="row">
                 <div class="col-md-12 align-self-end">
                     <?php
                     if (isset($_GET['param'])) {
-                        switch ($_GET['param']){
+                        switch ($_GET['param']) {
                             case 'profileDetails':
                                 require_once "profileDetails.php";
                                 break;
                             case 'wink' :
-                                //
+                                require_once  "winkPage.php";
                                 break;
                             case 'messages':
                                 header("Location:messagePage.php");
@@ -48,7 +57,6 @@
             </div>
         </div>
     </div>
-<!--    <div class="row profile-bg position-relative"></div>-->
 </div>
 </body>
 </html>

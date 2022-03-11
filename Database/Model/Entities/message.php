@@ -11,15 +11,15 @@ class Message{
      * @param int $fromUserId
      * @param int $toUserId
      * @param string $message
-     * @param DateTime $sentTime
+//     * @param DateTime $sentTime
      * @param bool $isRead
      */
-    public function __construct(int $fromUserId, int $toUserId, string $message, DateTime $sentTime, bool $isRead)
+    public function __construct(int $fromUserId, int $toUserId, string $message, bool $isRead = false)
     {
         $this->fromUserId = $fromUserId;
         $this->toUserId = $toUserId;
         $this->message = $message;
-        $this->sentTime = $sentTime;
+        //$this->sentTime = $sentTime;
         $this->isRead = $isRead;
     }
 
@@ -107,4 +107,3 @@ class Message{
 
 
 }
-?>
