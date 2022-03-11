@@ -260,9 +260,11 @@ body {
 }
 .profiles_for_guest{
     width: 100%;
-    height: 660px;
+    overflow: auto;
     background-color: #a27a99;
     margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
 }
 .profiles_holder{
     width: 90%;
@@ -308,16 +310,15 @@ body {
     width: 100%;
     height: 100%;
     /*background-color: #cd4e89;*/
-    margin-top: 20px;
+    margin-top: 10px;
 }
 #banner-signUp-image{
     padding-top: 75px;
-    padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
     height: 900px;
     background: url('../images/sign-up_banner.jpg') center no-repeat;
-    background-size:cover;
+    background-size: cover;
 
 
 }
@@ -358,3 +359,20 @@ body {
     color: white;
 }
                                             /*footer*/
+.footer-body{
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    left: 0;
+    bottom: 0;
+    background: #bb7b2f;
+}
+.footer-content{
+    text-decoration: none;
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: cornsilk;
+    letter-spacing: 4px;
+    font-size: 18px;
+    margin: 20px;
+}
