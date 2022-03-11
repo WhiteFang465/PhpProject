@@ -60,9 +60,9 @@ class UserTable extends Database
     }
 
     public function searchUserLike($searchString) : Array |false {
-        $query = "select * from user where first_name like :searchString";
-        $values = ["searchString"=>$searchString];
-        $results = $this->execute($query, $values);
+        $query = "select * from user where first_name like '" . $searchString. "%' ";
+        //$values = ["searchString"=>$searchString];
+        $results = $this->execute($query);
 
         if (!$results)
             return false;
@@ -100,6 +100,21 @@ class UserTable extends Database
             array_push($getAllUsers, (new User($row['first_name'], $row['last_name'], $row['gender'], $row['age'], $row['email'], $row['password'], $row['mobile_number'], $row['profile_pictures'], $row['images'], $row['premium'], $row['smokes'], $row['drinks'], $row['id'])));
         }
         return $getAllUsers;
+    }
+
+    public function getUserByID ($id) : User |false {
+        $query = "select * from user where id = :id";
+        $values = ["id"=>$id];
+        $results = $this->execute($query, $values);
+
+        if (!$results)
+            return false;
+
+        $user=false;
+        foreach ($results as $row) {
+            $user = (new User($row['first_name'], $row['last_name'], $row['gender'], $row['age'], $row['email'], $row['password'], $row['mobile_number'], $row['profile_pictures'], $row['images'], $row['premium'], $row['smokes'], $row['drinks'], $row['id']));
+        }
+        return $user;
     }
 
 }

@@ -191,10 +191,10 @@ body {
     color: #AB095A;
 }
                                                /*index.php page*/
-body{
-
-    /*background-color: #c9adba;*/
+.index_body{
+    background-color: #c9adba;
 }
+
 #parent_div{width: 100%; height: 100%;}
 .header_navbar{
     width: 100%;
@@ -227,7 +227,7 @@ body{
 .header_navbar_contents a:hover{color:#ffffff ;font-size: 15px;}
 .banner{
     width: 100%;
-    height: 100%;
+    height: 550px;
     /*background-color: #cd4e89;*/
     margin-top: 20px;
 }
@@ -239,31 +239,7 @@ body{
     height:510px;
     background: url('../images/index_image-1.jpg') no-repeat center center;
 }
-#banner-signUp-image{
-    padding-top: 75px;
-    padding-bottom: 50px;
-    text-align: center;
-    color: #f8f8f8;
-    height:510px;
 
-}
-#banner_content_signUp{
-    position: relative;
-    margin-top: 30px ;
-    margin-left: 1px;
-    padding:20px 20px 20px 70px ;
-    background-color: rgba(0, 0, 0, 0.1);max-width: 800px;
-    border-radius: 30px;
-    background: url('../images/bannerimageSignup.jpg') no-repeat center center;
-}
-#banner_content{
-    position: relative;
-    margin-top: 30px ;
-    margin-left: 1px;
-    padding:20px 20px 20px 70px ;
-    background-color: rgba(0, 0, 0, 0.1);max-width: 800px;
-    border-radius: 30px;
-}
 .btn {
     border-radius: 12px;
     background-color: #bb85a1;
@@ -327,5 +303,58 @@ body{
 .profiles_for_guest_container:hover .profiles_for_guest_image{
     opacity: 0.3;
 }
-                                                    /*footer*/
+                                                    /*signup*/
+.banner_signup{
+    width: 100%;
+    height: 100%;
+    /*background-color: #cd4e89;*/
+    margin-top: 20px;
+}
+#banner-signUp-image{
+    padding-top: 75px;
+    padding-bottom: 50px;
+    text-align: center;
+    color: #f8f8f8;
+    height: 900px;
+    background: url('../images/sign-up_banner.jpg') center no-repeat;
+    background-size:cover;
 
+
+}
+#banner_content_signUp{
+    position: relative;
+    width: 1200px;
+    margin-top: 30px ;
+    margin-left: 90px;
+    padding:20px 20px 20px 70px ;
+    background-color: rgba(0, 0, 0, 0.1);max-width: 800px;
+    border-radius: 30px;
+
+}
+#banner_content{
+    position: relative;
+    margin-top: 30px ;
+    margin-left: 1px;
+    padding:20px 20px 20px 70px ;
+    background-color: rgba(0, 0, 0, 0.1);max-width: 800px;
+    border-radius: 30px;
+}
+.btn_signup {
+    border-radius: 12px;
+    background-color: #bd8845;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.btn_signup:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #bb7b2f;
+    color: white;
+}
+                                            /*footer*/
