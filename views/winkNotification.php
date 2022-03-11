@@ -25,7 +25,7 @@ foreach ($winks as $wink) {
     $firstName = $dataBase->getName($wink['from_user_id']);
     ?>
     <div class="alert alert-info" role="alert">
-        <?=$firstName." send you wink"?>
+        <a href="profilePage.php?paramId=<?=$wink['from_user_id']?>"><?=$firstName." send you wink"?></a>
     </div>
 <?php }
 ?>
