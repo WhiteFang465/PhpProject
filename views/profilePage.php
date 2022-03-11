@@ -45,6 +45,10 @@ if (isset($_GET['paramId'])){
                             <a class="nav-link text-white" href="profilePage.php?param=messages"> Messages <span
                                         class="badge badge-pill badge-light">1</span></a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="profilePage.php?param=update_profile"> Update Profile <span
+                                        class="badge badge-pill badge-light"></span></a>
+                        </li>
                     <?php }
                     ?>
                 </ul>

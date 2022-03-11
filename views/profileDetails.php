@@ -1,6 +1,18 @@
 <!doctype html>
 <html lang="en">
-<?php require_once "./../includes/header.php" ?>
+<?php
+require_once "./../includes/header.php";
+
+require_once "./../Database/Model/Entities/userOperations.php";
+require_once "./../Database/Model/Entities/user.php";
+$user=false;
+$_POST['id']=4;
+if(isset($_POST['id']) && strlen($_POST['id'])>0) {
+    $_SESSION['id'] = $_POST['id'];
+    $user = $userTable->getUserByID($_POST['id']);
+}
+
+?>
 <body>
 <div class="table-responsive">
 <div class="card">
@@ -10,15 +22,27 @@
             <tbody>
             <tr>
                 <td style="width: 20% !important;">Name</td>
-                <td>Jimena</td>
+                <td> <?php echo $user->getFirstName() . " ". $user->getLastName() ?> </td>
             </tr>
             <tr>
-                <td>BirthDay</td>
-                <td>1979-10-22</td>
+                <td>Age</td>
+                <td><?php echo $user->getAge() ?></td>
             </tr>
             <tr>
                 <td>I am a</td>
-                <td>Woman</td>
+                <td><?php
+                    switch ($user->getGender()) {
+                        case 'M':
+                            echo "Male";
+                        break;
+                        case 'F':
+                            echo "Female";
+                            break;
+                        case 'O':
+                            echo "NA";
+                            break;
+                    }
+                     ?></td>
             </tr>
             </tbody>
         </table>
