@@ -1,18 +1,16 @@
 <?php
-session_start();
 require_once "./../includes/header.php";
 require_once "./../Database/Model/Entities/database.php";
 require_once "./../Database/Model/Entities/messageOperations.php";
-
+session_start();
 $firstName = '';
 $imageURL = '';
 $database = new Database();
 $messageOperation = new MessageTable();
-//echo $_SESSION['id'];
-if (isset($_GET['id'])) {
-    $firstName = $database->getName($_GET['id']);
-    $imageURL = $database->getImageURL($_GET['id']);
-    $messageOperation->markAsRead($_SESSION['id'],$_GET['id']);
+if (isset($_GET['pid'])) {
+    $firstName = $database->getName($_GET['pid']);
+    $imageURL = $database->getImageURL($_GET['pid']);
+    $messageOperation->markAsRead($_SESSION['id'],$_GET['pid']);
 
 }
 
@@ -22,7 +20,7 @@ if (isset($_GET['id'])) {
 <div class="wrapper">
     <section class="chat-area">
         <header>
-            <a href="view_profile.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+            <a href="view_profile.php?pid=<?=$_GET['pid']?>" class="back-icon"><i class="fas fa-arrow-left"></i></a>
             <img src="./../images/Profile_Pictures/<?=$imageURL?>" alt="">
             <div class="details">
                 <span><?= $firstName ?></span>
@@ -33,7 +31,7 @@ if (isset($_GET['id'])) {
         <form action="" method="post" class="typing-area">
             <input type="text" name="message" class="input-field" placeholder="Type a message here..."
                    autocomplete="off">
-            <input type="text" name="id" class="id" value="<?= $_GET['id'] ?>" hidden>
+            <input type="text" name="id" class="id" value="<?= $_GET['pid'] ?>" hidden>
             <button><i class="fab fa-telegram-plane"></i></button>
         </form>
     </section>
