@@ -8,7 +8,7 @@ require_once "./../Database/Model/Entities/userOperations.php";
 session_start();
 
 $demoProfile = [];
-$users=$userTable->getAllUsers();
+$users = $userTable->getAllUsers();
 
 if (isset($_POST["looking_for_select"])) {
     $gender = $_POST["looking_for_select"];
@@ -23,10 +23,10 @@ if (isset($_POST["looking_for_select"])) {
     $users = $userTable->getUsersByAgeAndGender($minAge, $maxAge, $gender);
 
 }
-if (isset($_POST['search_by_name'])){
-    if (strlen($_POST['search_by_name'])>0){
-         if($userTable->searchUserLike($_POST['search_by_name']))
-             $users = $userTable->searchUserLike($_POST['search_by_name']);
+if (isset($_POST['search_by_name'])) {
+    if (strlen($_POST['search_by_name']) > 0) {
+        if ($userTable->searchUserLike($_POST['search_by_name']))
+            $users = $userTable->searchUserLike($_POST['search_by_name']);
 
     }
 }
@@ -41,17 +41,6 @@ foreach ($users as $user) {
     ]);
 }
 
-/*
-$demoProfile = [
-    ["name" => "Aiony Haust", "age" => "24", "imgSrc" => "aiony-haust.jpg", "gender" => "Female"],
-    ["name" => "Aleksandr Minakov", "age" => "25", "imgSrc" => "aleksandr-minakov.jpg", "gender" => "female"],
-    ["name" => "Alexander Hipp", "age" => "20", "imgSrc" => "alexander-hipp.jpg", "gender" => "Male"],
-    ["name" => "Amir Mohammad", "age" => "26", "imgSrc" => "amir-mohammad.jpg", "gender" => "Male"],
-    ["name" => "Christian Buehner", "age" => "25", "imgSrc" => "christian-buehner.jpg", "gender" => "Male"],
-    ["name" => "Christina Wocintechchat", "age" => "19", "imgSrc" => "christina-wocintechchat.jpg", "gender" => "Female"],
-    ["name" => "Courtney Cook", "age" => "28", "imgSrc" => "courtney-cook.jpg", "gender" => "Female"],
-    ["name" => "Craig Mckay", "age" => "24", "imgSrc" => "craig-mckay.jpg", "gender" => "Female"]
-]*/
 ?>
 <body>
 <div id="parent_div">
@@ -81,11 +70,12 @@ $demoProfile = [
                             <input type="number" class="form-control col-sm-6" name="max_age" placeholder="Maximum Age">
                         </div>
                         <hr>
-                        <h3 >OR</h3>
+                        <h3>OR</h3>
                         <hr>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Search</label>
-                            <input type="text" class="form-control col-sm-6" name="search_by_name" placeholder="Search By Name">
+                            <input type="text" class="form-control col-sm-6" name="search_by_name"
+                                   placeholder="Search By Name">
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-6">
@@ -103,7 +93,9 @@ $demoProfile = [
         <div class="profiles_holder">
             <?php
             foreach ($demoProfile as $key) {
-            ?>
+                if (isset($_SESSION['id']) && $key['id'] == $_SESSION['id'])
+                    continue;
+                ?>
                 <div class="profiles_for_guest_container">
                     <img src="../images/Profile_Pictures/<?= $key['imgSrc'] ?>" alt="<?= $key['name'] ?>"
                          class="profiles_for_guest_image">
@@ -111,7 +103,14 @@ $demoProfile = [
                         <div><h5>Name : <?= $key['name'] ?> </h5>
                             <h5>Age : <?= $key['age'] ?></h5>
                             <h5>Gender : <?= $key['gender'] ?></h5>
-                            <a class="btn" href="view_profile.php?id=<?= $key['id'] ?>">Connect</a>
+                            <?php
+                            if (!isset($_SESSION['id'])) { ?>
+                                <a class="btn" href="login.php">Connect</a>
+                            <?php } else { ?>
+                                <a class="btn" href="view_profile.php?pid=<?= $key['id'] ?>">Connect</a>
+                            <?php }
+                            ?>
+
                         </div>
                     </div>
                 </div>
