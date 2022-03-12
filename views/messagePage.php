@@ -2,12 +2,18 @@
 session_start();
 require_once "./../includes/header.php";
 require_once "./../Database/Model/Entities/database.php";
+require_once "./../Database/Model/Entities/messageOperations.php";
 
-$getData = null;
-$db = new Database();
-
+$firstName = '';
+$imageURL = '';
+$database = new Database();
+$messageOperation = new MessageTable();
+//echo $_SESSION['id'];
 if (isset($_GET['id'])) {
-    $getData = $db->getData($_GET['id']);
+    $firstName = $database->getName($_GET['id']);
+    $imageURL = $database->getImageURL($_GET['id']);
+    $messageOperation->markAsRead($_SESSION['id'],$_GET['id']);
+
 }
 
 ?>
@@ -16,11 +22,10 @@ if (isset($_GET['id'])) {
 <div class="wrapper">
     <section class="chat-area">
         <header>
-            <a href="profilePage.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
-            <img src="./../images/download.jpg" alt="">
+            <a href="view_profile.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+            <img src="./../images/Profile_Pictures/<?=$imageURL?>" alt="">
             <div class="details">
-                <span><?= $getData[0]['first_name'] ?></span>
-                <p>Active Now</p>
+                <span><?= $firstName ?></span>
             </div>
         </header>
         <div class="chat-box">

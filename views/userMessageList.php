@@ -1,4 +1,5 @@
 <?php
+require_once "./../Database/Model/Entities/database.php";
 $database = new Database();
 $query = "select from_user_id from message where to_user_id like :to_user_id";
 $values = ["to_user_id"=>$_SESSION['id']];
@@ -21,7 +22,7 @@ $resultData = $database->execute($query,$values);
                     ?>
                     <li class="list-group-item d-flex align-items-center">
                         <div class="image-parent">
-                            <img src="./../images/download.jpg" alt="quixote">
+                            <img src="./../images/<?=$imgUrl?>" alt="quixote">
                         </div>
                         <a href="messagePage.php?id=<?=$data['from_user_id']?>"><h5 style="margin-left: 3rem"><?=$firstName?></h5></a>
                     </li>

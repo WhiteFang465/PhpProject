@@ -3,8 +3,13 @@ session_start();
 require_once "./../Database/Model/Entities/userOperations.php";
 require_once "./../Database/Model/Entities/user.php";
 require_once "./../Database/Model/Entities/favoritesOperations.php";
+require_once "./../Database/Model/Entities/winkOperations.php";
 $user=false;
 //$_POST['id']=4;
+$winkOperation = new WinkTable();
+if (isset($_GET['winkId'])){
+    $winkOperation->insert($_SESSION['id'],$_GET['winkId']);
+}
 
 if(isset($_REQUEST['id']) && strlen($_REQUEST['id'])>0) {
     $_SESSION['id'] = $_REQUEST['id'];
@@ -61,17 +66,23 @@ if(isset($_REQUEST['removeFavorites'])){
                 </div>
                 <div class="col-md-4 ">
                     <div class="row">
-                    <button style="width:100%;border-radius: 12px">Message</button> <br/>
+                    <button onclick="redirectTomessagePage(<?php echo $user->getId() ?>)" style="width:100%;border-radius: 12px">Message</button> <br/>
                     </div><br/>
                     <div class="row">
-                        <button style="width:100%;border-radius: 12px">Wink</button> <br/>
+                        <button onclick="redirectTowinkPage(<?php echo $user->getId() ?>)" style="width:100%;border-radius: 12px">Wink</button> <br/>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
 </div>
 </body>
 </html>
+<script>
+    function redirectTomessagePage(id){
+        window.location.href = "messagePage.php?id="+id;
+    }
+    function redirectTowinkPage(id){
+        window.location.href = "view_profile.php?winkId="+id;
+    }
+</script>
