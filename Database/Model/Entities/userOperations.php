@@ -123,7 +123,12 @@ class UserTable extends Database
         $result = $this->execute($query,$values);
         return $result[0]['premium'] == 1;
     }
-
+    public function setProfilePictureByID(int $id, string $imageName) : array | false {
+        $query= "update user set profile_pictures=:imageName where id like :id";
+        $values = ["id"=>$id,"imageName"=>$imageName];
+        $result = $this->execute($query,$values);
+        return $result;
+    }
 }
 
 $userTable = new UserTable();

@@ -1,15 +1,18 @@
 <?php
 require_once "./../Database/Model/Entities/database.php";
 require_once "./../Database/Model/Entities/messageOperations.php";
+require_once "./../Database/Model/Entities/winkOperations.php";
 session_start();
 $database = new Database();
 $messageOperation = new MessageTable();
 $winkOperation = new WinkTable();
 $userData = null;
 $profileData = [];
+
 if (isset($_SESSION['id'])) {
     $userData = $database->getData($_SESSION['id']);
 }
+
 if (isset($_GET['paramId'])) {
     $profileData = $database->getData($_GET['paramId']);
     $_SESSION['profileFirstName'] = $profileData[0]["first_name"];
@@ -68,6 +71,8 @@ if (isset($_GET['paramId'])) {
                             case 'messages':
                                 require_once "userMessageList.php";
                                 break;
+                            case 'update_profile':
+                                require_once "updateProfile.php";
                         }
                     }
                     ?>
