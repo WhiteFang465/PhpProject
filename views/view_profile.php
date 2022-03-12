@@ -5,15 +5,14 @@ require_once "./../Database/Model/Entities/user.php";
 require_once "./../Database/Model/Entities/favoritesOperations.php";
 require_once "./../Database/Model/Entities/winkOperations.php";
 $user=false;
-//$_POST['id']=4;
 $winkOperation = new WinkTable();
 if (isset($_GET['winkId'])){
     $winkOperation->insert($_SESSION['id'],$_GET['winkId']);
 }
 
-if(isset($_REQUEST['id']) && strlen($_REQUEST['id'])>0) {
-    $_SESSION['id'] = $_REQUEST['id'];
-    $user = $userTable->getUserByID($_REQUEST['id']);
+if(isset($_REQUEST['pid']) && strlen($_REQUEST['pid'])>0) {
+    $_SESSION['pid'] = $_REQUEST['pid'];
+    $user = $userTable->getUserByID($_REQUEST['pid']);
 }
 
 if(isset($_REQUEST['addFavorites'])){
@@ -80,9 +79,9 @@ if(isset($_REQUEST['removeFavorites'])){
 </html>
 <script>
     function redirectTomessagePage(id){
-        window.location.href = "messagePage.php?id="+id;
+        window.location.href = "messagePage.php?pid="+id;
     }
     function redirectTowinkPage(id){
-        window.location.href = "view_profile.php?winkId="+id;
+        window.location.href = "view_profile.php?winkId="+id+"&pid="+id;
     }
 </script>
