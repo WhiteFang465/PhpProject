@@ -1,8 +1,6 @@
 <?php
-$_SESSION['id']=4;
 require_once "user.php";
 require_once "favorites.php";
-
 require_once "database.php";
 
 class FavoriteTable extends Database
