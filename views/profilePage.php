@@ -1,6 +1,7 @@
 <?php
 require_once "./../Database/Model/Entities/database.php";
 require_once "./../Database/Model/Entities/messageOperations.php";
+require_once "./../Database/Model/Entities/winkOperations.php";
 session_start();
 $database = new Database();
 $messageOperation = new MessageTable();
@@ -9,6 +10,7 @@ $userData = null;
 $profileData = [];
 if (isset($_SESSION['id'])) {
     $userData = $database->getData($_SESSION['id']);
+
 }
 if (isset($_GET['paramId'])) {
     $profileData = $database->getData($_GET['paramId']);
@@ -31,7 +33,7 @@ if (isset($_GET['paramId'])) {
         <div class="col-sm-2 position-absolute">
             <img class="img-thumbnail rounded img-shadow mb-3" style="border-style: none !important;"
                  src="./../images/download.jpg">
-            <h1 class=" text-left card-title"><b><?= $_SESSION['profileFirstName'] ?></b></h1>
+            <h1 class=" text-left card-title"><b><?=$userData[0]['first_name']?></b></h1>
 
         </div>
         <div class="col-sm-8 profile-items position-absolute" style="top: 10rem;left: 25rem">

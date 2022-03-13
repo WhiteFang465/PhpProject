@@ -1,6 +1,4 @@
 <?php
-
-
 ?>
 <div class="header_navbar">
     <div class="header_navbar_logo">
@@ -24,7 +22,7 @@
                 $_SESSION['username']="Guest";
             }
             if(isset($_SESSION['username'])){
-                echo "Hello ".$_SESSION['username'];
+                echo "<a href='./../views/profilePage.php'>Hello ".$_SESSION['username']."</a>";
                 if($_SESSION['username']!="Guest")
                     echo "<a href = '../views/logout.php'> Logout</a >";
             }
