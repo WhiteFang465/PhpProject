@@ -2,6 +2,8 @@
 require_once "./../Database/Model/Entities/database.php";
 require_once "./../Database/Model/Entities/messageOperations.php";
 require_once "./../Database/Model/Entities/winkOperations.php";
+require_once "./../Database/Model/Entities/userOperations.php";
+require_once "./../Database/Model/Entities/user.php";
 session_start();
 $database = new Database();
 $messageOperation = new MessageTable();
@@ -10,6 +12,7 @@ $userData = null;
 $profileData = [];
 if (isset($_SESSION['id'])) {
     $userData = $database->getData($_SESSION['id']);
+    $user = $userTable->getUserByID(intval($_SESSION['id']));
 
 }
 if (isset($_GET['paramId'])) {
@@ -31,8 +34,14 @@ if (isset($_GET['paramId'])) {
     <div class="row profile-bg position-relative"
          style="margin-bottom: 20rem;width: 100%;height: 100px;/* background-color: #cd4e89; */margin-left: 2px;margin-right: 2px;">
         <div class="col-sm-2 position-absolute">
+            <?php
+            $profilePicture = "./../images/user-icon-png.png";
+            if (($user->getProfilePicture()) != "")
+                $profilePicture = "./../images/Profile_Pictures/" . $user->getProfilePicture();
+
+            ?>
             <img class="img-thumbnail rounded img-shadow mb-3" style="border-style: none !important;"
-                 src="./../images/download.jpg">
+                 src="<?=$profilePicture?>">
             <h1 class=" text-left card-title"><b><?=$userData[0]['first_name']?></b></h1>
 
         </div>
@@ -54,6 +63,14 @@ if (isset($_GET['paramId'])) {
                         <a class="nav-link text-white" href="profilePage.php?param=update_profile"> Update Profile <span
                                     class="badge badge-pill badge-light"></span></a>
                     </li>
+                    <?php
+                    if ($user->isPremium()) {
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="profilePage.php?param=favorites"> Favorites <span
+                                        class="badge badge-pill badge-light"></span></a>
+                        </li>
+                    <?php } ?>
                 </ul>
             </div>
             <div class="row">
@@ -69,6 +86,12 @@ if (isset($_GET['paramId'])) {
                                 break;
                             case 'messages':
                                 require_once "userMessageList.php";
+                                break;
+                            case 'update_profile':
+                                require_once "updateProfile.php";
+                                break;
+                            case 'favorites':
+                                require_once "favoritesList.php";
                                 break;
                         }
                     }
