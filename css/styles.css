@@ -350,6 +350,7 @@ body {
     height: 100%;
     /*background-color: #cd4e89;*/
     margin-top: 10px;
+    overflow: auto;
 }
 
 #banner-signUp-image {
