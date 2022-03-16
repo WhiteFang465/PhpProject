@@ -67,7 +67,7 @@ if (isset($_GET['paramId'])) {
                     if ($user->isPremium()) {
                         ?>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="profilePage.php?param=favorites"> Favorites <span
+                            <a class="nav-link text-white" href="profilePage.php?param=favorites">My favorites <span
                                         class="badge badge-pill badge-light"></span></a>
                         </li>
                     <?php } ?>

@@ -13,10 +13,11 @@ class FavoriteTable extends Database
 
     public function addToFavorites(int $userID)
     {
-        $query = "insert into favorites (user_id, favorite_persons_user_id, added, removed, is_read ) VALUES (?, ?, ?, ?,?)";
-        $values = [$_SESSION['id'], $userID, 1,0 , 0];
-        $idOfRow = $this->executeInsert( $query, $values);
-
+        if(!($this->favoriteRecordExists($userID))) {
+            $query = "insert into favorites (user_id, favorite_persons_user_id, added, removed, is_read ) VALUES (?, ?, ?, ?,?)";
+            $values = [ $_SESSION['id'],$userID, 1, 0, 0];
+            $idOfRow = $this->executeInsert($query, $values);
+        }
     }
     public function favoriteRecordExists(int $userID) : bool
     {
