@@ -5,7 +5,7 @@
 require_once "./../includes/header.php";
 require_once "./../Database/Model/Entities/user.php";
 require_once "./../Database/Model/Entities/userOperations.php";
-session_start();
+//session_start();
 
 $demoProfile = [];
 $users = $userTable->getAllUsers();

@@ -6,12 +6,16 @@ require_once "./../includes/header.php";
 require_once "./../Database/Model/Entities/userOperations.php";
 require_once "./../Database/Model/Entities/user.php";
 $user=false;
-//$_POST['id']=4;
+
 if(isset($_REQUEST['pid']) && strlen($_REQUEST['pid'])>0) {
     $_SESSION['pid'] = $_REQUEST['pid'];
-    $user = $userTable->getUserByID($_REQUEST['pid']);
-}
 
+}
+else {
+    if (isset($_SESSION['pid'])) {
+        $user = $userTable->getUserByID($_SESSION['pid']);
+    }
+}
 ?>
 <body>
 <div class="table-responsive">

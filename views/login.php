@@ -15,7 +15,7 @@ if (isset($_REQUEST['username']) && isset($_REQUEST['password'])) {
     if ($loginStatus[0]==true ){
         $_SESSION['username'] = $_REQUEST['username'];
         $_SESSION['password'] = $_REQUEST['password'];
-        $_SESSION['id']=$loginStatus[0]->getId();
+        $_SESSION['id']=$loginStatus->getId();
         // echo  $_SESSION['id'];
         //var_dump($loginStatus);
         //   echo "status" . $loginStatus[1];

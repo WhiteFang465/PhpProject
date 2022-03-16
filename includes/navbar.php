@@ -1,6 +1,15 @@
+
 <?php
 
+require_once "./../Database/Model/Entities/userOperations.php";
+require_once "./../Database/Model/Entities/user.php";
 
+if(isset($_SESSION['id'])) {
+    $user = $userTable->getUserByID($_SESSION['id']);
+}
+else{
+    $_SESSION['username']="Guest";
+}
 ?>
 <div class="header_navbar">
     <div class="header_navbar_logo">
@@ -20,13 +29,17 @@
 
                 }
             }
-            else{
-                $_SESSION['username']="Guest";
-            }
+
             if(isset($_SESSION['username'])){
-                echo "Hello ".$_SESSION['username'];
-                if($_SESSION['username']!="Guest")
+
+                if($_SESSION['username']!="Guest") {
+                    echo "<a href='profileDetails.php'>Hello " . $user->getFirstName() . " " . $user->getLastName() . "</a>";
+
                     echo "<a href = '../views/logout.php'> Logout</a >";
+                }
+                else{
+                    echo "Hello ".$_SESSION['username'];
+                }
             }
 
 
