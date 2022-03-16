@@ -1,6 +1,7 @@
 <?php
 require_once "../includes/header.php";
 require_once "../Database/Model/Entities/userOperations.php";
+require_once "./../Database/Model/Entities/database.php";
 
 
 if(!isset($_SESSION['username'])){
@@ -15,7 +16,9 @@ if (isset($_REQUEST['username']) && isset($_REQUEST['password'])) {
     if ($loginStatus[0]==true ){
         $_SESSION['username'] = $_REQUEST['username'];
         $_SESSION['password'] = $_REQUEST['password'];
-        $_SESSION['id']=$loginStatus->getId();
+        $_SESSION['id']=$loginStatus[0]->getId();
+        $_SESSION['name'] = $loginStatus[0]->getFirstName();
+
         // echo  $_SESSION['id'];
         //var_dump($loginStatus);
         //   echo "status" . $loginStatus[1];
