@@ -11,7 +11,9 @@ if(!isset($_SESSION['username'])){
 if (isset($_REQUEST['username']) && isset($_REQUEST['password'])) {
     $loginStatus = $userTable->authenticateUsernameAndPassword($_REQUEST['username'], $_REQUEST['password']);
     //var_dump($loginStatus);
-    session_start();
+    if(session_status()!=PHP_SESSION_ACTIVE){
+        session_start();
+    }
 
     if ($loginStatus[0]==true ){
         $_SESSION['username'] = $_REQUEST['username'];
@@ -19,17 +21,9 @@ if (isset($_REQUEST['username']) && isset($_REQUEST['password'])) {
         $_SESSION['id']=$loginStatus[0]->getId();
         $_SESSION['name'] = $loginStatus[0]->getFirstName();
 
-        // echo  $_SESSION['id'];
-        //var_dump($loginStatus);
-        //   echo "status" . $loginStatus[1];
-
-        //  echo $loginStatus[0]->getId();
 
 
         header("location:index.php");
-
-    } else {
-        echo "<script>alert('Please check the username and password entered');</script>";
 
     }
 }
@@ -61,7 +55,13 @@ if (isset($_REQUEST['username']) && isset($_REQUEST['password'])) {
                                 <button onclick="myFunction()" type="submit" class="btn">Login</button>
 
                                 <br/><br/>
-
+                                <?php
+                                    if(isset($loginStatus)) {
+                                        if (!$loginStatus[0]) {
+                                            echo "<font color='white'> Incorrect username or password </font><br/><br/>";
+                                        }
+                                    }
+                                ?>
                                 <a href="SignUpUI.php"><font color="white">Create an account</font></a>
 
                             </div>

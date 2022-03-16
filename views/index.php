@@ -104,7 +104,7 @@ foreach ($users as $user) {
                             <h5>Age : <?= $key['age'] ?></h5>
                             <h5>Gender : <?= $key['gender'] ?></h5>
                             <?php
-                            if (!isset($_SESSION['id'])) { ?>
+                            if (($_SESSION['username'])=="Guest") { ?>
                                 <a class="btn" href="login.php">Connect</a>
                             <?php } else { ?>
                                 <a class="btn" href="view_profile.php?pid=<?= $key['id'] ?>">Connect</a>

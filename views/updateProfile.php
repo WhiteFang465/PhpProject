@@ -19,7 +19,7 @@ $user = $userTable->getUserByID(intval($_SESSION['id']));
             if (isset($_FILES['fileToUpload']) && strlen($_FILES['fileToUpload']['tmp_name']) > 0) {
                 $imageFile = $_FILES['fileToUpload'];
                 //name, full_path, type, tmp_name, error, size
-                if ($imageFile['size'] > 300_000) { //~300kb
+                if ($imageFile['size'] > 4000_000) { //~2000kb
                     echo "File size too big.";
                 } else {
                     $allowedTypes = array(IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG);

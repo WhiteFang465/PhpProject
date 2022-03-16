@@ -245,13 +245,13 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: cornsilk;
     letter-spacing: 4px;
-    font-size: 13px;
+    font-size: 10px;
     margin: 20px;
 }
 
 .header_navbar_contents a:hover {
     color: #ffffff;
-    font-size: 15px;
+    font-size: 11px;
 }
 
 .banner {
