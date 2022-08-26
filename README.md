@@ -73,7 +73,7 @@ To access profile page user needs to click on there name on the header. They wil
 
 Profile shows all the information about the user (content included from profileDetails.php)
 
-###### coded by Purav and Diksha
+###### Coded by Purav and Diksha
 <br/><br/>
 
 Wink shows all the winks received by the current user.(content included from wink.php)
@@ -81,14 +81,14 @@ Wink shows all the winks received by the current user.(content included from win
 Messages shows all the messages received by current user.(content included from messages.php)
 
 
-###### coded by Purav
+###### Coded by Purav
 <br/><br/>
 
 ### Update Profile  (content included from update_profile.php)
 
 User can upload a new profile image and edit basic details from this page. 
 
-###### coded by Diksha and Atul
+###### Coded by Diksha and Atul
  <br/><br/>
 
 
