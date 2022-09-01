@@ -3,7 +3,14 @@ A creative yet easy to use dating website designed and coded using PHP and PHPMy
 
 Starting online dating has never been easier. Check out this amazing website by clicking on index.php
 
-## Overview
+
+### Language
+PHP, CSS, HTML
+
+### Database 
+PHPMyAdmin
+
+## Overview 
 
 
 ### index.php
